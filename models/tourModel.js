@@ -174,18 +174,16 @@ tourSchema.pre(/^find/, function(next) {
   next();
 });
 
-tourSchema.post(/^find/, function(docs, next) {
-  // eslint-disable-next-line no-console
-  console.log(`Query took ${Date.now() - this.start} milliseconds!`);
-  next();
-});
+// tourSchema.post(/^find/, function(docs, next) {
+//   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
+//   next();
+// });
 
 // AGGREGATION MIDDLEWARE
 tourSchema.pre('aggregate', function(next) {
   this.pipeline().push({ $match: { secretTour: { $ne: true } } });
 
-  // eslint-disable-next-line no-console
-  console.log(this.pipeline());
+  // console.log(this.pipeline());
   next();
 });
 

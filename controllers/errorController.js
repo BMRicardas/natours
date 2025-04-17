@@ -34,7 +34,6 @@ const sendErrorDev = (err, req, res) => {
 
   // HTML
   console.error('ERROR 💥', err);
-  console.log('WWW1WWW');
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     message: err.message
@@ -62,7 +61,6 @@ const sendErrorProd = (err, req, res) => {
   // HTML
   // Operational, trusted error: send message to client
   if (err.isOperational) {
-    console.log('WWW2WWW');
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       message: err.message
@@ -71,7 +69,6 @@ const sendErrorProd = (err, req, res) => {
 
   // Programming or other unknown error: don't leak error details
   console.error('ERROR 💥', err);
-  console.log('WWW3WWW');
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     message: 'Please try again later!'

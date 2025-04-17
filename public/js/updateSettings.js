@@ -17,8 +17,6 @@ async function updateSettings(data, type) {
       data
     });
 
-    console.log({ res });
-
     if (res.data.status === 'success') {
       showAlert('success', `${type.toUpperCase()} updated successfully!`);
       window.setTimeout(() => {
